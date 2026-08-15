@@ -127,7 +127,7 @@ func (s *Store) Create(payload []byte, ttl time.Duration) (Session, error) {
 		}
 		return Session{
 			ID:        id,
-			Payload:   stored,
+			Payload:   append([]byte(nil), stored...),
 			CreatedAt: now,
 			ExpiresAt: now.Add(ttl),
 		}, nil
