@@ -22,7 +22,7 @@ func run(w io.Writer) error {
 		return fmt.Errorf("create session: %w", err)
 	}
 	fmt.Fprintf(w, "created id=%s ttl=%s expires=%s\n",
-		sess.ID, demoTTL, sess.ExpiresAt.UTC().Format(time.RFC3339))
+		sess.ID, demoTTL, sess.ExpiresAt.Format(time.RFC3339))
 
 	payload, ok := store.Get(sess.ID)
 	if !ok {
